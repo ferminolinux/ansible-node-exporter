@@ -1,0 +1,15 @@
+[Unit]
+Description=Prometheus Node Exporter
+Documentation=https://github.com/prometheus/node_exporter
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+User={{ control_user }}
+Group={{ control_user }}
+ExecStart={{ exporter_binary }}
+PIDFile=/var/run/node_exporter.pid
+
+[Install]
+WantedBy=multi-user.target
